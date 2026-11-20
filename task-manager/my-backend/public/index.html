@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Менеджер задач</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <main class="container">
+    <header class="brand">
+      <span class="badge">BACKEND PROJECT</span>
+      <h1>Менеджер задач</h1>
+      <p class="subtitle">Личный список дел с авторизацией и хранением в PostgreSQL</p>
+    </header>
+
+    <!-- Блок входа и регистрации -->
+    <section id="auth-section" class="card">
+      <div class="tabs" role="tablist">
+        <button id="tab-login" class="tab active" type="button">Вход</button>
+        <button id="tab-register" class="tab" type="button">Регистрация</button>
+      </div>
+
+      <form id="auth-form" class="auth-form">
+        <div class="field">
+          <label for="email">Электронная почта</label>
+          <input id="email" type="email" placeholder="student@university.ru" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Пароль</label>
+          <input id="password" type="password" placeholder="Минимум 4 символа" required />
+        </div>
+
+        <button id="auth-submit" class="btn-primary" type="submit">Войти</button>
+      </form>
+      <p id="auth-error" class="error"></p>
+    </section>
+
+    <!-- Блок задач (виден после входа) -->
+    <section id="tasks-section" class="card hidden">
+      <div class="top-bar">
+        <div class="user-chip">
+          <span class="dot"></span>
+          <span id="user-info"></span>
+        </div>
+        <button id="logout-btn" type="button" class="btn-ghost">Выйти</button>
+      </div>
+
+      <form id="task-form" class="task-form">
+        <input id="task-input" type="text" placeholder="Что нужно сделать дальше?" required />
+        <button type="submit" class="btn-primary">Добавить</button>
+      </form>
+
+      <div class="toolbar">
+        <div class="filters">
+          <button data-filter="all" class="filter active" type="button">Все</button>
+          <button data-filter="false" class="filter" type="button">Активные</button>
+          <button data-filter="true" class="filter" type="button">Готово</button>
+        </div>
+        <span id="task-counter" class="counter">0 задач</span>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+      <p id="task-error" class="error"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
